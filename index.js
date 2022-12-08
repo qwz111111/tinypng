@@ -122,7 +122,7 @@ function fileUpdate(imgpath, obj) {
         console.log(
           `[${imagepath}] \n 压缩成功 ----> 原始大小:${transition(
             obj.input.size
-          )}，压缩后大小:${transition(obj.output.size)}，压缩比例:${(
+          )}---压缩后大小:${transition(obj.output.size)}---压缩比例:${(
             (1 - obj.output.ratio) *
             100
           ).toFixed(0)}% \n`
