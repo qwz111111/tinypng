@@ -120,12 +120,12 @@ function fileUpdate(imgpath, obj) {
       fs.writeFile(imagepath, body, 'binary', err => {
         if (err) return console.error(err)
         console.log(
-          `[${imagepath}] \n 压缩成功，原始大小：${transition(
+          `[${imagepath}] \n 压缩成功 ----> 原始大小:${transition(
             obj.input.size
-          )}，压缩后大小：${transition(obj.output.size)}，优化比例：${(
+          )}，压缩后大小:${transition(obj.output.size)}，压缩比例:${(
             (1 - obj.output.ratio) *
             100
-          ).toFixed(0)}%`
+          ).toFixed(0)}% \n`
         )
       })
     })
