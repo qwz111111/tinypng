@@ -1,1 +1,1 @@
-start cmd /c "cd /d %cd%&&node clear_input.js&&node clear_input.js"
+start cmd /c "cd /d %cd%&&node clear_input.js"

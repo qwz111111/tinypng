@@ -11,6 +11,8 @@ const fs = require('fs')
 const path = require('path')
 const https = require('https')
 const { URL } = require('url')
+const { mkdirsSync, transition } = require('./utils/utils.cjs')
+
 // 当前文件路径
 const cwd = process.cwd()
 // 只能压缩文件
@@ -103,7 +105,7 @@ function fileUpdate(imgpath, obj) {
   const filesAyyay = imagepath.split('\\')
   const outputDir = filesAyyay.slice(0, -1).join('\\')
   if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir)
+    mkdirsSync(outputDir, null)
   }
 
   let options = new URL(obj.output.url)
@@ -118,7 +120,11 @@ function fileUpdate(imgpath, obj) {
       fs.writeFile(imagepath, body, 'binary', err => {
         if (err) return console.error(err)
         console.log(
-          `[${imagepath}] \n 压缩成功，原始大小-${obj.input.size}，压缩大小-${obj.output.size}，优化比例-${obj.output.ratio}`
+          `[${imagepath}] \n 压缩成功，原始大小：${transition(
+            obj.input.size
+          )}，压缩后大小：${transition(obj.output.size)}，优化比例：${(
+            obj.output.ratio * 100
+          ).toFixed(0)}%`
         )
       })
     })
