@@ -123,7 +123,8 @@ function fileUpdate(imgpath, obj) {
           `[${imagepath}] \n 压缩成功，原始大小：${transition(
             obj.input.size
           )}，压缩后大小：${transition(obj.output.size)}，优化比例：${(
-            obj.output.ratio * 100
+            (1 - obj.output.ratio) *
+            100
           ).toFixed(0)}%`
         )
       })
