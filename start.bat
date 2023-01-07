@@ -1,1 +1,1 @@
-start cmd /k "cd /d %cd%&&node index.js"
+start cmd /k "cd /d ./src && node index.js"
