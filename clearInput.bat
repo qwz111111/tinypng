@@ -1,1 +1,0 @@
-start cmd /c "cd /d ./src && node clear_input.js"

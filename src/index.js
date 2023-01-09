@@ -14,7 +14,7 @@ const { URL } = require('url')
 const { mkdirsSync, transition } = require('./utils/utils.cjs')
 
 // 当前文件路径
-const cwd = process.cwd()
+const cwd = path.resolve(__dirname, '..')
 // 只能压缩文件
 const exts = ['.jpg', '.png']
 // 单个文件最大值 5MB == 5242848.754299136

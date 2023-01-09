@@ -1,8 +1,9 @@
 const fs = require('fs')
+const path = require('path')
 const { deleteFiles } = require('./utils/utils.cjs')
 
-// 当前文件路径
-const cwd = process.cwd()
+// 上一级目录
+const cwd = path.resolve(__dirname, '..')
 //删除目录下所有文件和文件夹
 const root = `${cwd}\\output`
 deleteFiles(root)
