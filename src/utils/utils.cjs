@@ -56,14 +56,14 @@ function mkdirsSync(dirname) {
  */
 function transition(size) {
   const map = [
-    [() => size < 1024, () => `${size} 字节`],
-    [() => size < 1048576, () => `${(size / 1024).toFixed(1)} kb`]
+    [() => size < 1024, () => `${size}字节`],
+    [() => size < 1048576, () => `${(size / 1024).toFixed(1)}kb`]
   ]
   const target = map.find(m => m[0]())
   if (target) {
     return target[1]()
   } else {
-    return `${(size / 1048576).toFixed(2)} Mb`
+    return `${(size / 1048576).toFixed(2)}Mb`
   }
 }
 module.exports = {

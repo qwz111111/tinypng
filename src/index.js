@@ -16,7 +16,7 @@ const { mkdirsSync, transition } = require('./utils/utils.cjs')
 // 当前文件路径
 const cwd = path.resolve(__dirname, '..')
 // 只能压缩文件
-const exts = ['.jpg', '.png']
+const exts = ['.jpg', '.jpeg', '.png', '.webp']
 // 单个文件最大值 5MB == 5242848.754299136
 const max = 5200000
 // 伪造的请求头
@@ -67,12 +67,11 @@ function fileFilter(file) {
       // 必须是文件，小于5MB，后缀 jpg||png
       stats.size <= max &&
       stats.isFile() &&
-      exts.includes(path.extname(file))
+      exts.includes(path.extname(file.toLowerCase()))
     ) {
       // 通过 X-Forwarded-For 头部伪造客户端IP
       options.headers['X-Forwarded-For'] = getRandomIP()
-
-      fileUpload(file) // console.log('可以压缩：' + file);
+      fileUpload(file)
     }
     // if (stats.isDirectory()) fileList(file + '/');
   })
@@ -122,7 +121,7 @@ function fileUpdate(imgpath, obj) {
         console.log(
           `[${imagepath}] \n 压缩成功 ----> 原始大小:${transition(
             obj.input.size
-          )}---压缩后大小:${transition(obj.output.size)}---压缩比例:${(
+          )} ----> 压缩后大小:${transition(obj.output.size)} ----> 压缩比例:${(
             (1 - obj.output.ratio) *
             100
           ).toFixed(0)}% \n`
